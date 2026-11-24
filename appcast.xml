@@ -6,6 +6,16 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Teavy Connect</title>
         <item>
+            <title>0.1.0</title>
+            <pubDate>Tue, 24 Nov 2026 20:43:53 +0800</pubDate>
+            <link>https://github.com/xshowee/teavy-connect-releases</link>
+            <sparkle:fullReleaseNotesLink>https://github.com/xshowee/teavy-connect-releases/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.0/Teavy-Connect-0.1.0.dmg" length="3193158" type="application/octet-stream" sparkle:edSignature="0FodkjZnCrJUvxmyOybeR7mAZbi1yrUJz9Ouw+GP5A0Atg/4dI6cSnyOcM5c+F9eWkJ7j3kBtvVH/5SRxqt1AA=="/>
+        </item>
+        <item>
             <title>0.2</title>
             <pubDate>Tue, 24 Nov 2026 19:56:35 +0800</pubDate>
             <link>https://github.com/xshowee/teavy-connect-releases</link>
@@ -38,6 +48,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: VADt2ruLVHSEdjug77SCgl+mPo5iTbWOgvlgXmOHolt3xRMDRSMdxPSVZjX7w/7ChSecVy4M6Inke8DoyzBsBQ==
-length: 2499
+edSignature: BDhNeK57GIdV/1qY8XsiREi/EOFJvcYn6wOhLZE1IWBD+gvX8OinRhtaoGlmc5m+5kVlB9oEZoJndRvaiMo0Cw==
+length: 3325
 -->

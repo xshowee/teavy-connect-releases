@@ -1,8 +1,30 @@
-<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+<?xml version="1.0" standalone="yes"?>
+<!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+-->
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>Teavy Connect</title>
+        <item>
+            <title>0.1.1</title>
+            <pubDate>Tue, 24 Nov 2026 19:22:11 +0800</pubDate>
+            <link>https://github.com/xshowee/teavy-connect-releases</link>
+            <sparkle:fullReleaseNotesLink>https://github.com/xshowee/teavy-connect-releases/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[## Test build
+
+- Same as 0.1 with a higher version number, published to verify automatic updates. Not offered as an update.
+
+---
+
+## 测试版
+
+- 和 0.1 相同，只是版本号更高，用来验证自动更新。不作为更新提供。
+]]></description>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.1/Teavy-Connect-0.1.1.dmg" length="3175395" type="application/octet-stream" sparkle:edSignature="J/Jd6a9H2ltNk2bBniFgBOtsSvC/yROOg1QJqOZVL4odM/ooznhugZaYxWe32KJeIivsaBqDWzsbjfPWBvOhCw=="/>
+        </item>
         <item>
             <title>0.1</title>
             <pubDate>Tue, 24 Nov 2026 19:01:01 +0800</pubDate>
@@ -21,10 +43,11 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 
 - 让 iPhone、iPad 上的 Teavy 在局域网外也能经一条加密连接用视频流连这台 Mac。只有配对过的设备才能连。
 ]]></description>
-            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1/Teavy-Connect-0.1.dmg" length="3175409" type="application/octet-stream" sparkle:edSignature="aMGeGh3bjJDZLMKEvKSYFxFsnzviF5/SjduZfOWt+mk5MIcx9CemFdSf2Zb0EYZ5TceMRLu/+deWJbCxSMxiDA=="></enclosure>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1/Teavy-Connect-0.1.dmg" length="3175409" type="application/octet-stream" sparkle:edSignature="aMGeGh3bjJDZLMKEvKSYFxFsnzviF5/SjduZfOWt+mk5MIcx9CemFdSf2Zb0EYZ5TceMRLu/+deWJbCxSMxiDA=="/>
         </item>
     </channel>
-</rss><!-- sparkle-signatures:
-edSignature: Zd+6DSIsFD3OYTOl3cxSZdjSOy168lEZKGrgOKOfpfpv8XCM3q1nIOSEGnwTRETdhiiDmzkLm0EMUYPOaHG0CQ==
-length: 1689
+</rss>
+<!-- sparkle-signatures:
+edSignature: UC9sMMeYbQM/KcSLdhsYY5dLAOds94nQepkVP4qYkvOrA0ngGAyUrf7gZfwW1eeV0yJB4nMEokJ59+5hcqwSCw==
+length: 2824
 -->

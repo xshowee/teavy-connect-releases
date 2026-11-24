@@ -83,7 +83,47 @@ allowPorts = [{ single = 59500 }]
 
 > **QUIC 连不上、总是退回 TCP？**转发器（Lucky 等）的 UDP 转发如果监听在通配地址，而路由器的 WAN 口有多个 IPv6 地址，回包可能从另一个地址发出，被客户端的网络丢掉。现象是 Teavy 提示“视频流在这个网络里不可用”、统计里显示经 Teavy Connect · TCP。把转发规则的监听地址填成域名解析到的那个地址，或者让 WAN 口只有一个 IPv6 地址。
 >
-> frps 自己转发 UDP 时也一样：frps 所在的电脑有多个 IPv6 地址，或者开着 sing-box、Clash 这类接管默认路由的 TUN 代理时，frps 回的包会从另一个地址（甚至 TUN 的内网地址）发出。可以在 frps.toml 里把 `proxyBindAddr` 设成域名解析到的那个地址（它对这个 frps 上的所有代理都生效），或者让 TUN 代理不接管这个端口的回包。
+> frps 自己转发 UDP 时也一样：frps 所在的电脑有多个 IPv6 地址，或者开着 sing-box、Clash 这类接管默认路由的 TUN 代理时，frps 回的包会从另一个地址（甚至 TUN 的内网地址）发出。frps 跑在一台装了 Teavy Connect 的 Mac 上时，用下面的“UDP 中转”，不用改 frps；否则可以在 frps.toml 里把 `proxyBindAddr` 设成域名解析到的那个地址（它对这个 frps 上的所有代理都生效），或者让 TUN 代理不接管这个端口的回包。
+
+#### frps 跑在一台装了 Teavy Connect 的 Mac 上：UDP 中转
+
+例如家里的 Mac mini 跑着 frps（它自己也装了 Teavy Connect），带出门的 MacBook 经 frpc 连回来。让家里这台 Mac 的 Teavy Connect 替 frps 收发 UDP：它在所有地址上监听，回包从收包的那个地址发出，再经本机转给 frps 的 UDP 代理口。TCP 照旧由 frps 直接收。
+
+```
+家里的 Mac：
+  iPhone ──TCP 59500──> frps ───────────────────────────────┐
+  iPhone ──UDP 59500──> Teavy Connect（中转）                 │
+                          └──> 127.0.0.1:15950（frps 的 UDP 代理口）
+                                                             │ frp 隧道
+MacBook：                                                    ▼
+  frpc ──> 127.0.0.1:5950（MacBook 上的 Teavy Connect，UDP 和 TCP）
+```
+
+1. **MacBook 上的 frpc**：TCP 和 UDP 映射到不同的远程端口，TCP 给客户端直连，UDP 只给中转用：
+
+   ```toml
+   [[proxies]]
+   name = "teavy-connect-tcp"
+   type = "tcp"
+   localIP = "127.0.0.1"
+   localPort = 5950
+   remotePort = 59500
+
+   [[proxies]]
+   name = "teavy-connect-udp"
+   type = "udp"
+   localIP = "127.0.0.1"
+   localPort = 5950
+   remotePort = 15950
+   ```
+
+2. **家里那台 Mac 的 Teavy Connect**：设置 › frp 的 UDP 中转 › 添加中转，填 `59500 → 127.0.0.1:15950`。它只转到本机。中转的端口不能和这台 Mac 自己的 Teavy Connect 端口重。
+3. **路由器或防火墙**：把 59500 的 UDP 和 TCP 都放行到家里这台 Mac（TCP 到 frps，UDP 到 Teavy Connect，同一个端口号）。15950 不要放行。
+4. **MacBook 上的 Teavy Connect**：外部地址填 `home.example.com:59500`。
+
+需要两台 Mac 上的 Teavy Connect 和 iPhone、iPad 上的 Teavy 都是支持这项功能的版本：旧版的 Teavy 会让 MacBook 发出过大的包，QUIC 连上了却没有画面。
+
+frp 是把每个 UDP 包装进 frpc 到 frps 的那条连接（默认是 TCP 加 TLS）里转的，那条连接上丢一个包，后面的包都要等它重传，画面偶尔会卡一下。能直连（做法一、做法三）就直连。
 
 ### 做法三：IPv6 直连，不经转发器
 

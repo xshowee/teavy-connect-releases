@@ -82,6 +82,8 @@ allowPorts = [{ single = 59500 }]
 外部地址填 `frps.example.com:59500`。
 
 > **QUIC 连不上、总是退回 TCP？**转发器（Lucky 等）的 UDP 转发如果监听在通配地址，而路由器的 WAN 口有多个 IPv6 地址，回包可能从另一个地址发出，被客户端的网络丢掉。现象是 Teavy 提示“视频流在这个网络里不可用”、统计里显示经 Teavy Connect · TCP。把转发规则的监听地址填成域名解析到的那个地址，或者让 WAN 口只有一个 IPv6 地址。
+>
+> frps 自己转发 UDP 时也一样：frps 所在的电脑有多个 IPv6 地址，或者开着 sing-box、Clash 这类接管默认路由的 TUN 代理时，frps 回的包会从另一个地址（甚至 TUN 的内网地址）发出。可以在 frps.toml 里把 `proxyBindAddr` 设成域名解析到的那个地址（它对这个 frps 上的所有代理都生效），或者让 TUN 代理不接管这个端口的回包。
 
 ### 做法三：IPv6 直连，不经转发器
 
@@ -94,7 +96,7 @@ allowPorts = [{ single = 59500 }]
    config host
        option name 'mac'
        option mac 'aa:bb:cc:dd:ee:ff'   # 这台 Mac 的网卡地址
-       option hostid '5950'             # LuCI 里的“IPv6 后缀（令牌）”
+       option hostid '5950'             # LuCI 静态租约里的“IPv6 令牌”
 
    config dhcp 'lan'
        option dhcpv6 'server'
@@ -103,7 +105,7 @@ allowPorts = [{ single = 59500 }]
 
    改完后让 Mac 重新连一下网络，在“系统设置 › 网络 › 详细信息 › TCP/IP”里能看到这个地址。
 
-2. **防火墙放行**：从 WAN 到这台 Mac 的 5950，UDP 和 TCP 都放行。目标地址按后缀匹配，运营商换了前缀规则照样有效（固件不支持掩码写法时就填完整地址，前缀变了要跟着改）：
+2. **防火墙放行**：从 WAN 到这台 Mac 的 5950，UDP 和 TCP 都放行，只放 IPv6。目标地址按后缀匹配，运营商换了前缀规则照样有效（LuCI 里在目标地址的“自定义”里填）：
 
    ```
    # /etc/config/firewall

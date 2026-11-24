@@ -1,8 +1,24 @@
-<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+<?xml version="1.0" standalone="yes"?>
+<!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+-->
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>Teavy Connect</title>
+        <item>
+            <title>0.1.1</title>
+            <pubDate>Wed, 25 Nov 2026 02:06:40 +0800</pubDate>
+            <link>https://github.com/xshowee/teavy-connect-releases</link>
+            <sparkle:fullReleaseNotesLink>https://github.com/xshowee/teavy-connect-releases/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[- 新增“frp 的 UDP 中转”：Mac 经 frp 被连时也能走 QUIC 和视频流。做法见说明里的 frp 一节。
+- QUIC 包长限到 1232 字节，经隧道和 IPv6 路径时不容易因包太大连不上。
+- 修了若干问题：中转按来源限流数，停掉媒体流时立即让出端口。
+]]></description>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.1/Teavy-Connect-0.1.1.dmg" length="3390478" type="application/octet-stream" sparkle:edSignature="4Amg5xavrqcLLDS6KVKBgP0jdbVmEczLSPagX95MorxWEEeCJSWwYsRE/CT3+jnq5h4dV8wodJz663kGY61VBA=="/>
+        </item>
         <item>
             <title>0.1.0</title>
             <pubDate>Tue, 24 Nov 2026 20:43:53 +0800</pubDate>
@@ -11,10 +27,11 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
             <sparkle:version>4</sparkle:version>
             <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.0/Teavy-Connect-0.1.0.dmg" length="3193158" type="application/octet-stream" sparkle:edSignature="0FodkjZnCrJUvxmyOybeR7mAZbi1yrUJz9Ouw+GP5A0Atg/4dI6cSnyOcM5c+F9eWkJ7j3kBtvVH/5SRxqt1AA=="></enclosure>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.0/Teavy-Connect-0.1.0.dmg" length="3193158" type="application/octet-stream" sparkle:edSignature="0FodkjZnCrJUvxmyOybeR7mAZbi1yrUJz9Ouw+GP5A0Atg/4dI6cSnyOcM5c+F9eWkJ7j3kBtvVH/5SRxqt1AA=="/>
         </item>
     </channel>
-</rss><!-- sparkle-signatures:
-edSignature: fgkwzAXAx4QeSGLTryKWG3WP/S9itdfDjNk3svOQ6H8ciatrZV+BZkqYCxkARhaVbkJRQjZbTFfxyqNJnNPpAg==
-length: 1271
+</rss>
+<!-- sparkle-signatures:
+edSignature: hpqWXKzY/BlonPFoxKdH80fgre3I95dGFl0PDkCT1M5t67s7o+OmC/vuN/hHGc/yUjG0rJMA6iHuOCaChGyXBg==
+length: 2474
 -->

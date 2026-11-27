@@ -6,6 +6,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Teavy Connect</title>
         <item>
+            <title>0.2.0</title>
+            <pubDate>Fri, 27 Nov 2026 14:45:07 +0800</pubDate>
+            <link>https://github.com/xshowee/teavy-connect-releases</link>
+            <sparkle:fullReleaseNotesLink>https://github.com/xshowee/teavy-connect-releases/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>6</sparkle:version>
+            <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[- 新增“作为 Server”和“作为 Client”：从外面到不了的 Mac（例如带出门的笔记本）可以经家里的另一台 Mac 被连，视频流和声音照常走 QUIC，不用 frp。做法见说明里的“经另一台 Mac 被连”。
+- Client 换网络、睡眠唤醒后自己连回 Server；UDP 不通时退回 TCP。
+- Client 可以申请经 Server 转发本机的其他端口（例如 SSH），Server 批准后生效。
+- 在家时 Teavy 照常走局域网直连，不绕 Server。
+]]></description>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.2.0/Teavy-Connect-0.2.0.dmg" length="4760526" type="application/octet-stream" sparkle:edSignature="eylvvNyLWWV2w7sPY+ggVX4y2uiZmbqC0vB7+/9kOKLHi/gE0AJk1ORxve0+i2baGltxcJCagYwCrbbwRFHJBw=="/>
+        </item>
+        <item>
             <title>0.1.1</title>
             <pubDate>Wed, 25 Nov 2026 02:06:40 +0800</pubDate>
             <link>https://github.com/xshowee/teavy-connect-releases</link>
@@ -32,6 +47,6 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: hpqWXKzY/BlonPFoxKdH80fgre3I95dGFl0PDkCT1M5t67s7o+OmC/vuN/hHGc/yUjG0rJMA6iHuOCaChGyXBg==
-length: 2474
+edSignature: QtZ7cq23DY14TtRJEzeEfA2v9fVUPvWEoasCY4jmKMxJvKqLDugrvBny0ToS/yRXlKS8vC6VN4gdM2mIHNtaDg==
+length: 3882
 -->

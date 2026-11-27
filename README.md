@@ -24,11 +24,11 @@ Teavy Connect 每天检查一次更新，有新版本时在后台下载，没有
 
 ## 从局域网外连
 
-Teavy Connect 只开放一个端口，默认 **5950，UDP 和 TCP 同号**（可以在设置里改）。怎么从公网到达这个端口由你自己安排，下面是三种常见做法。不论哪种：
+Teavy Connect 只开放一个端口，默认 **5950，UDP 和 TCP 同号**（可以在设置里改）。怎么从公网到达这个端口由你自己安排，下面是四种常见做法。不论哪种：
 
 - **UDP 和 TCP 都要转发。**视频流走 QUIC（UDP）；只转发 TCP 也能连，但只能用帧缓冲编码，画面没有视频流流畅，也没有声音。
 - **不要再把屏幕共享的 5900 端口暴露到公网。**以前为屏幕共享做的 5900 端口映射或 frp 代理，有了 Teavy Connect 之后就删掉，从外面只转发 Teavy Connect 的端口。
-- 在 Teavy Connect 的设置里把“外部地址”填成从外面到达这个端口的域名加端口（例如 `home.example.com:5950`），配对时 iPhone 会记下它。
+- 在 Teavy Connect 的设置里把“外部地址”填成从外面到达这个端口的域名加端口（例如 `home.example.com:5950`），配对时 Teavy 会记下它。
 
 下面的域名、地址和端口都是示例，换成你自己的。
 
@@ -41,7 +41,7 @@ Teavy Connect 只开放一个端口，默认 **5950，UDP 和 TCP 同号**（可
 适合 Mac 不在家里（比如随身带出门的 MacBook），由 Mac 上的 frpc 连回家里的 frps，再经 Lucky 之类的转发器暴露到公网。数据要走两层，**每一层都要同时转发 UDP 和 TCP**：
 
 ```
-iPhone ──公网──> Lucky（UDP+TCP 59500）──> frps 所在电脑的 59500（UDP+TCP）
+Teavy ──公网──> Lucky（UDP+TCP 59500）──> frps 所在电脑的 59500（UDP+TCP）
                                               │ frp 隧道
                                               └──> Mac 上的 frpc ──> 127.0.0.1:5950（Teavy Connect）
 ```
@@ -81,7 +81,7 @@ allowPorts = [{ single = 59500 }]
 
 外部地址填 `frps.example.com:59500`。
 
-> **QUIC 连不上、总是退回 TCP？**转发器（Lucky 等）的 UDP 转发如果监听在通配地址，而路由器的 WAN 口有多个 IPv6 地址，回包可能从另一个地址发出，被客户端的网络丢掉。现象是 Teavy 提示“视频流在这个网络里不可用”、统计里显示经 Teavy Connect · TCP。把转发规则的监听地址填成域名解析到的那个地址，或者让 WAN 口只有一个 IPv6 地址。
+> **QUIC 连不上、总是退回 TCP？**转发器（Lucky 等）的 UDP 转发如果监听在通配地址，而路由器的 WAN 口有多个 IPv6 地址，回包可能从另一个地址发出，被客户端的网络丢掉。现象是 Teavy 提示“视频流不可用：UDP 不可达”、统计里显示经 Teavy Connect · TCP。把转发规则的监听地址填成域名解析到的那个地址，或者让 WAN 口只有一个 IPv6 地址。
 >
 > frps 自己转发 UDP 时也一样：frps 所在的电脑有多个 IPv6 地址，或者开着 sing-box、Clash 这类接管默认路由的 TUN 代理时，frps 回的包会从另一个地址（甚至 TUN 的内网地址）发出。frps 跑在一台装了 Teavy Connect 的 Mac 上时，用下面的“UDP 中转”，不用改 frps；否则可以在 frps.toml 里把 `proxyBindAddr` 设成域名解析到的那个地址（它对这个 frps 上的所有代理都生效），或者让 TUN 代理不接管这个端口的回包。
 
@@ -91,8 +91,8 @@ allowPorts = [{ single = 59500 }]
 
 ```
 家里的 Mac：
-  iPhone ──TCP 59500──> frps ───────────────────────────────┐
-  iPhone ──UDP 59500──> Teavy Connect（中转）                 │
+  Teavy ──TCP 59500──> frps ───────────────────────────────┐
+  Teavy ──UDP 59500──> Teavy Connect（中转）                 │
                           └──> 127.0.0.1:15950（frps 的 UDP 代理口）
                                                              │ frp 隧道
 MacBook：                                                    ▼
@@ -117,7 +117,7 @@ MacBook：                                                    ▼
    remotePort = 15950
    ```
 
-2. **家里那台 Mac 的 Teavy Connect**：设置 › frp 的 UDP 中转 › 添加中转，填 `59500 → 127.0.0.1:15950`。它只转到本机。中转的端口不能和这台 Mac 自己的 Teavy Connect 端口重。
+2. **家里那台 Mac 的 Teavy Connect**：设置 › 高级 › UDP 中转 › 添加中转，填 `59500 → 127.0.0.1:15950`。它只转到本机。中转的端口不能和这台 Mac 自己的 Teavy Connect 端口重。
 3. **路由器或防火墙**：把 59500 的 UDP 和 TCP 都放行到家里这台 Mac（TCP 到 frps，UDP 到 Teavy Connect，同一个端口号）。15950 不要放行。
 4. **MacBook 上的 Teavy Connect**：外部地址填 `home.example.com:59500`。
 
@@ -169,6 +169,22 @@ frp 是把每个 UDP 包装进 frpc 到 frps 的那条连接（默认是 TCP 加
    ```
 
 外部地址填 `home.example.com:5950`。这种做法只有 IPv6：客户端所在的网络（大多数蜂窝网络有）也要有 IPv6 才连得上。
+
+### 做法四：经另一台 Mac 被连（Server 和 Client）
+
+适合一台 Mac 从外面到得了（例如家里的 Mac mini，用上面的做法开好了端口），另一台到不了（例如带出门的 MacBook）的情况。前一台当 Server，后一台当 Client：Client 主动连到 Server 并一直保持着，Teavy 连 Server 上分给这台 Client 的端口，就到了 Client。不用 frp，视频流和声音照常走 QUIC。
+
+1. **Server**：设置里打开“作为 Server”，填好外部地址（例如 `home.example.com:5950`）。
+2. Server 的菜单里点“接入 Client…”，拷贝链接（或者记下地址和配对码）。
+3. **Client**：设置里打开“作为 Client”，点“接入…”，粘贴链接或输入地址和配对码，核对 Server 的名字后确认。
+4. Server 给每台 Client 分一个端口，从 5951 往上分，可以在菜单的“已接入的 Client”里改。在路由器或防火墙上把这个端口的 **UDP 和 TCP** 都放行到 Server。
+5. 接入后，Client 的外部地址自动改用 Server 的地址和分到的端口（关掉“作为 Client”后恢复原来填的）。在 Client 上配对设备时记下的就是这个地址；之前配对过的设备要重新配对一次。
+
+- 在家时 Teavy 照常走局域网直连，不绕 Server。
+- Client 换网络、睡眠唤醒后自己连回 Server。
+- 一台 Server 最多接入 8 台 Client；撤销后那台 Client 就不能再经它被连。
+- Client 还可以在设置的“经 Server 转发其他端口”里申请转发本机的其他端口（例如 SSH 的 22），Server 批准后生效。这些端口不经 Teavy Connect 认证，和直接暴露到公网一样。
+- 两台 Mac 上的 Teavy Connect 和 iPhone、iPad 上的 Teavy 都要是支持这项功能的版本。
 
 ## 卸载
 

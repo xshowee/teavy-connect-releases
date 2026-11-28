@@ -6,6 +6,19 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Teavy Connect</title>
         <item>
+            <title>0.1.5</title>
+            <pubDate>Sat, 28 Nov 2026 23:04:27 +0800</pubDate>
+            <link>https://github.com/xshowee/teavy-connect-releases</link>
+            <sparkle:fullReleaseNotesLink>https://github.com/xshowee/teavy-connect-releases/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>10</sparkle:version>
+            <sparkle:shortVersionString>0.1.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[- 菜单、配对窗口和设置里的说明改得更简洁，配对窗口的提示更醒目。
+- 手动检查更新时，已是最新版本会用中文提示。
+]]></description>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.5/Teavy-Connect-0.1.5.dmg" length="5112566" type="application/octet-stream" sparkle:edSignature="EmEynfhp+PNjY8b+vgKxBj6UVlLIHJEdB1fSwJ/lsEcie3bJkgLcIgYZHoUbmXFn80DIMEwa/0ecPZ/WDhJiAg=="/>
+        </item>
+        <item>
             <title>0.1.4</title>
             <pubDate>Sat, 28 Nov 2026 22:24:30 +0800</pubDate>
             <link>https://github.com/xshowee/teavy-connect-releases</link>
@@ -30,22 +43,9 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
 ]]></description>
             <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.3/Teavy-Connect-0.1.3.dmg" length="3443314" type="application/octet-stream" sparkle:edSignature="B2IpzPbIi5Nm4mAT3oTAMZfBNwHSLubVHIPV3jCO7FfA1Y+NbrhBUiTcAytC7mx7An62/3lAhgeSSo1K7HxQCA=="/>
         </item>
-        <item>
-            <title>0.1.2</title>
-            <pubDate>Fri, 27 Nov 2026 21:32:08 +0800</pubDate>
-            <link>https://github.com/xshowee/teavy-connect-releases</link>
-            <sparkle:fullReleaseNotesLink>https://github.com/xshowee/teavy-connect-releases/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>7</sparkle:version>
-            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[- 撤下 0.2.0 加的“作为 Server”和“作为 Client”，被连照旧用端口映射或内网穿透加 UDP 中转。0.2.0 里设的端口、外部地址和 UDP 中转照常保留。
-- 在 0.2.0 里经 Server 配对过的设备，要把地址改回原来的。
-]]></description>
-            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.2/Teavy-Connect-0.1.2.dmg" length="3420305" type="application/octet-stream" sparkle:edSignature="hcoMqO8XxiPC/i8BMO6YhuPxSVmEnNdCzmAecKhcJlga3U0KZqs31T+Eiz+juS8ZBOyKtNLHG0xSlShrvECiDw=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: QB/vEkC3x0E1ppYCn677kMHShQ0L9rSHjpU1xYJj40Mm9qFvL2KpHBBXL+H6xScvYj7f/NDiSC7j/RdHK1snBw==
-length: 3895
+edSignature: CHFrL3rD+3HmvbQzADqEofA8D5hQlyx7M4LurvuMrOSkYU1asXxcelup0Rbo2Zk2j0tKDFp6nVihtEMSyP9oBA==
+length: 3790
 -->

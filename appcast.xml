@@ -1,8 +1,23 @@
-<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+<?xml version="1.0" standalone="yes"?>
+<!-- sparkle-sign-warning:
 IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
---><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+-->
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
         <title>Teavy Connect</title>
+        <item>
+            <title>0.1.4</title>
+            <pubDate>Sat, 28 Nov 2026 22:24:30 +0800</pubDate>
+            <link>https://github.com/xshowee/teavy-connect-releases</link>
+            <sparkle:fullReleaseNotesLink>https://github.com/xshowee/teavy-connect-releases/releases</sparkle:fullReleaseNotesLink>
+            <sparkle:version>9</sparkle:version>
+            <sparkle:shortVersionString>0.1.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[- 新图标：App 图标和菜单栏图标换成冒着热气的茶杯，菜单栏里有问题时热气换成感叹号，连不上后台代理时加一道斜线。
+- 去掉“高级 › UDP 中转”。旧版里配过的中转规则不再生效，可以删掉对应的端口转发。
+]]></description>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.4/Teavy-Connect-0.1.4.dmg" length="5103574" type="application/octet-stream" sparkle:edSignature="e9N1F4WPp9BJtHC+DdB2xzSUwwr89o/F8FeR5zOjVDsQ6n8HaMkkUcwroAfjRvGgzQDQm50pw4ZOl7P5h+iIAA=="/>
+        </item>
         <item>
             <title>0.1.3</title>
             <pubDate>Sat, 28 Nov 2026 17:06:22 +0800</pubDate>
@@ -13,7 +28,7 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <description sparkle:format="markdown"><![CDATA[- 修好经内网穿透等慢速线路开视频流时后台代理卡死、之后谁也连不上的问题：画面比线路快时，代理按线路实际发出的量转发，多出来的丢掉。
 ]]></description>
-            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.3/Teavy-Connect-0.1.3.dmg" length="3443314" type="application/octet-stream" sparkle:edSignature="B2IpzPbIi5Nm4mAT3oTAMZfBNwHSLubVHIPV3jCO7FfA1Y+NbrhBUiTcAytC7mx7An62/3lAhgeSSo1K7HxQCA=="></enclosure>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.3/Teavy-Connect-0.1.3.dmg" length="3443314" type="application/octet-stream" sparkle:edSignature="B2IpzPbIi5Nm4mAT3oTAMZfBNwHSLubVHIPV3jCO7FfA1Y+NbrhBUiTcAytC7mx7An62/3lAhgeSSo1K7HxQCA=="/>
         </item>
         <item>
             <title>0.1.2</title>
@@ -26,24 +41,11 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
             <description sparkle:format="markdown"><![CDATA[- 撤下 0.2.0 加的“作为 Server”和“作为 Client”，被连照旧用端口映射或内网穿透加 UDP 中转。0.2.0 里设的端口、外部地址和 UDP 中转照常保留。
 - 在 0.2.0 里经 Server 配对过的设备，要把地址改回原来的。
 ]]></description>
-            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.2/Teavy-Connect-0.1.2.dmg" length="3420305" type="application/octet-stream" sparkle:edSignature="hcoMqO8XxiPC/i8BMO6YhuPxSVmEnNdCzmAecKhcJlga3U0KZqs31T+Eiz+juS8ZBOyKtNLHG0xSlShrvECiDw=="></enclosure>
-        </item>
-        <item>
-            <title>0.1.1</title>
-            <pubDate>Wed, 25 Nov 2026 02:06:40 +0800</pubDate>
-            <link>https://github.com/xshowee/teavy-connect-releases</link>
-            <sparkle:fullReleaseNotesLink>https://github.com/xshowee/teavy-connect-releases/releases</sparkle:fullReleaseNotesLink>
-            <sparkle:version>5</sparkle:version>
-            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[- 新增“UDP 中转”：Mac 经内网穿透被连时也能走 QUIC 和视频流。做法见说明里的内网穿透一节。
-- QUIC 包长限到 1232 字节，经隧道和 IPv6 路径时不容易因包太大连不上。
-- 修了若干问题：中转按来源限流数，停掉媒体流时立即让出端口。
-]]></description>
-            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.1/Teavy-Connect-0.1.1.dmg" length="3390478" type="application/octet-stream" sparkle:edSignature="4Amg5xavrqcLLDS6KVKBgP0jdbVmEczLSPagX95MorxWEEeCJSWwYsRE/CT3+jnq5h4dV8wodJz663kGY61VBA=="></enclosure>
+            <enclosure url="https://github.com/xshowee/teavy-connect-releases/releases/download/v0.1.2/Teavy-Connect-0.1.2.dmg" length="3420305" type="application/octet-stream" sparkle:edSignature="hcoMqO8XxiPC/i8BMO6YhuPxSVmEnNdCzmAecKhcJlga3U0KZqs31T+Eiz+juS8ZBOyKtNLHG0xSlShrvECiDw=="/>
         </item>
     </channel>
-</rss><!-- sparkle-signatures:
-edSignature: npBWSrPJz6W5pdyj8ubhaXol6Di6uiUjdDkkAAY0JwiskB2DdTO/OSmbvYitDWAiWCJwZcFw3/5EJurD83b4Dg==
-length: 3955
+</rss>
+<!-- sparkle-signatures:
+edSignature: QB/vEkC3x0E1ppYCn677kMHShQ0L9rSHjpU1xYJj40Mm9qFvL2KpHBBXL+H6xScvYj7f/NDiSC7j/RdHK1snBw==
+length: 3895
 -->
